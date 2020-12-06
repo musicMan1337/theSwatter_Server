@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS bug;
+
+CREATE TABLE bug (
+  id SERIAL PRIMARY KEY,
+  user_name VARCHAR(50) NOT NULL REFERENCES users(user_name) ON DELETE CASCADE,
+  bug_name VARCHAR(50) NOT NULL,
+  description VARCHAR(5000) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  completed_at TIMESTAMPTZ,
+  completed_notes VARCHAR(5000)
+);

@@ -1,0 +1,52 @@
+root: true
+env:
+  commonjs: true
+  browser: true
+  es2020: true
+  mocha: true
+  node: true
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+extends:
+  - eslint:recommended
+  - airbnb-base
+  #! Prettier must be last, in this order
+  - plugin:prettier/recommended
+globals:
+  #! for testing
+  expect: readonly
+  supertest: readonly
+  knex: readonly
+  NODE_ENV: readonly
+  TEST_DB_URL: readonly
+  JWT_SECRET: readonly
+  JWT_EXPIRY: readonly
+ignorePatterns:
+  #! target only db/ src/ tests/
+  - '/*'
+  - '!db/'
+  - '!src/'
+  - '!tests/'
+  - 'db/**.csv'
+rules:
+  camelcase: 0
+  one-var: 0
+  no-unused-vars:
+    #! example - if not using 'req': router.get((_req, res, next) => {})
+    - warn
+    - argsIgnorePattern: ^_
+  linebreak-style:
+    - error
+    - unix
+  no-empty-function:
+    - warn
+    - allow:
+        #! this allows for empty service/boilerplate code
+        - methods
+  no-plusplus: 0
+  no-await-in-loop: 0
+  no-return-assign: 0
+  no-param-reassign: 0
+  no-trailing-spaces: 0
+  no-underscore-dangle: 0

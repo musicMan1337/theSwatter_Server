@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS comment_thread;
+
+CREATE TABLE comment_thread (
+  id SERIAL PRIMARY KEY,
+  bug_id INTEGER REFERENCES bug(id) ON DELETE CASCADE,
+  user_name VARCHAR(50) NOT NULL REFERENCES users(user_name) ON DELETE CASCADE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  comment VARCHAR(2000) NOT NULL
+);

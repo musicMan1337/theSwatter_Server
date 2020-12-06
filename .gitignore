@@ -1,0 +1,9 @@
+.env
+.env.test
+.env.heroku
+*.log
+.nyc_output/
+logs/
+node_modules/
+
+!db/
